@@ -6,6 +6,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import { AuthProvider } from "./context/AuthContext";
 import JobList from "./pages/JobList";
 import JobDetails from "./pages/JobDetails";
+import Applicants from "./pages/Applicants";
 
 
 export default function App() {
@@ -24,14 +25,14 @@ export default function App() {
             }
           />
 
-          <Route
+          {/* <Route
             path="/jobs"
             element={
               <ProtectedRoute role="jobseeker">
                 <JobSeekerDashboard />
               </ProtectedRoute>
             }
-          />
+          /> */}
           <Route path="/jobs" element={
             <ProtectedRoute role="jobseeker">
               <JobList />
@@ -43,6 +44,15 @@ export default function App() {
               <JobDetails />
             </ProtectedRoute>
           } />
+          <Route
+            path="/employer/jobs/:jobId/applicants"
+            element={
+              <ProtectedRoute role="employer">
+                <Applicants />
+              </ProtectedRoute>
+            }
+          />
+
 
         </Routes>
       </AuthProvider>

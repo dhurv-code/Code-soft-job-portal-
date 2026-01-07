@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import api from "../api/axios";
 import { useAuth } from "../context/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 export default function EmployerDashboard() {
   const { user, logout } = useAuth();
@@ -16,6 +17,7 @@ export default function EmployerDashboard() {
   const [location, setLocation] = useState("");
   const [jobType, setJobType] = useState("");
   const [salary, setSalary] = useState("");
+  const navigate = useNavigate();
 
   // 🔹 Fetch employer jobs
   const fetchMyJobs = async () => {
@@ -91,7 +93,13 @@ export default function EmployerDashboard() {
         <br />
         <input placeholder="Location" value={location} required onChange={(e) => setLocation(e.target.value)} />
         <br />
-        <input placeholder="Job Type" value={jobType} required onChange={(e) => setJobType(e.target.value)} />
+        <select value={jobType} required onChange={(e) => setJobType(e.target.value)}>
+          <option value="">Select Job Type</option>
+          <option value="Full-Time">Full-Time</option>
+          <option value="Part-Time">Part-Time</option>
+          <option value="Internship">Internship</option>
+        </select>
+
         <br />
         <input placeholder="Salary" value={salary} required onChange={(e) => setSalary(e.target.value)} />
         <br />
@@ -117,8 +125,18 @@ export default function EmployerDashboard() {
             <p>{job.location}</p>
             <p>Type: {job.jobType}</p>
             <p>Salary: {job.salary}</p>
+
+            {/* 🔴 STEP 5 BUTTON */}
+            <button
+              onClick={() =>
+                navigate(`/employer/jobs/${job._id}/applicants`)
+              }
+            >
+              View Applicants
+            </button>
           </div>
         ))
+
       )}
     </div>
   );

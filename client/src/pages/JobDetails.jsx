@@ -25,10 +25,14 @@ export default function JobDetails() {
   if (!job) return <p>Loading...</p>;
 
   return (
-    <div>
+    <div style={{ maxWidth: "700px", margin: "40px auto" }}>
       <h2>{job.title}</h2>
       <p>{job.description}</p>
+      <p>{job.company}</p>
+      <p>{job.location}</p>
+      <p>Type: {job.jobType}</p>
 
+      {/* 🔴 APPLY BUTTON */}
       {user?.role === "jobseeker" && (
         <button onClick={apply}>Apply</button>
       )}

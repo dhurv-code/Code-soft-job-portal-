@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import api from "../api/axios";
 import { Link } from "react-router-dom";
+import api from "../api/axios";
 
 export default function JobList() {
   const [jobs, setJobs] = useState([]);
@@ -10,14 +10,18 @@ export default function JobList() {
   }, []);
 
   return (
-    <div>
-      <h1>All Jobs</h1>
+    <div style={{ maxWidth: "800px", margin: "40px auto" }}>
+      <h2>Available Jobs</h2>
+
+      {jobs.length === 0 && <p>No jobs available</p>}
 
       {jobs.map((job) => (
-        <div key={job._id} style={{ border: "1px solid #ccc", margin: 10 }}>
+        <div key={job._id} style={{ border: "1px solid #ccc", padding: 10, marginBottom: 10 }}>
           <h3>{job.title}</h3>
           <p>{job.company}</p>
-          <Link to={`/jobs/${job._id}`}>View</Link>
+          <p>{job.location}</p>
+
+          <Link to={`/jobs/${job._id}`}>View Job</Link>
         </div>
       ))}
     </div>
