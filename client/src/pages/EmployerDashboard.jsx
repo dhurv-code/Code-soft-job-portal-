@@ -10,7 +10,7 @@ export default function EmployerDashboard() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
-  // form state
+  
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [company, setCompany] = useState("");
@@ -19,7 +19,7 @@ export default function EmployerDashboard() {
   const [salary, setSalary] = useState("");
   const navigate = useNavigate();
 
-  // 🔹 Fetch employer jobs
+
   const fetchMyJobs = async () => {
     setLoading(true);
     setError("");
@@ -39,7 +39,6 @@ export default function EmployerDashboard() {
     fetchMyJobs();
   }, []);
 
-  // 🔹 Create job
   const handleCreateJob = async (e) => {
     e.preventDefault();
     setError("");
@@ -54,7 +53,7 @@ export default function EmployerDashboard() {
         salary,
       });
 
-      // clear form
+      
       setTitle("");
       setDescription("");
       setCompany("");
@@ -62,7 +61,7 @@ export default function EmployerDashboard() {
       setJobType("");
       setSalary("");
 
-      // reload jobs
+      
       fetchMyJobs();
     } catch (err) {
       console.error("Create job error:", err);
@@ -126,7 +125,7 @@ export default function EmployerDashboard() {
             <p>Type: {job.jobType}</p>
             <p>Salary: {job.salary}</p>
 
-            {/* 🔴 STEP 5 BUTTON */}
+          
             <button
               onClick={() =>
                 navigate(`/employer/jobs/${job._id}/applicants`)
