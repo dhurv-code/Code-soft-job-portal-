@@ -1,6 +1,6 @@
 import Job from "../models/Job.js";
 
-// CREATE JOB (Employer only)
+
 export const createJob = async (req, res) => {
   try {
     if (req.user.role !== "employer") {
@@ -19,7 +19,7 @@ export const createJob = async (req, res) => {
   }
 };
 
-// GET ALL JOBS (Public)
+
 export const getJobs = async (req, res) => {
   try {
     const jobs = await Job.find().sort({ createdAt: -1 });
@@ -29,7 +29,7 @@ export const getJobs = async (req, res) => {
   }
 };
 
-// GET SINGLE JOB (Public)
+
 export const getJobById = async (req, res) => {
   try {
     const job = await Job.findById(req.params.id);
@@ -42,7 +42,7 @@ export const getJobById = async (req, res) => {
   }
 };
 
-// GET EMPLOYER JOBS (Protected)
+
 export const getEmployerJobs = async (req, res) => {
   try {
     const jobs = await Job.find({ createdBy: req.user.id }).sort({
