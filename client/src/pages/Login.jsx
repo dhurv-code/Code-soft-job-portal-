@@ -27,7 +27,7 @@ export default function Login() {
         throw new Error("Token missing from response");
       }
 
-      // 🔴 MANUAL JWT PAYLOAD DECODE (NO LIBRARY)
+     
       const payload = JSON.parse(
         atob(token.split(".")[1])
       );
@@ -37,7 +37,7 @@ export default function Login() {
         role: payload.role,
       };
 
-      // 🔴 THIS FIXES EVERYTHING
+      
       login(token, user);
 
       if (user.role === "employer") {
