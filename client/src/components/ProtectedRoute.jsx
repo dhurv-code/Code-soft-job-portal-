@@ -6,12 +6,10 @@ export default function ProtectedRoute({ children, role }) {
 
   if (loading) return <h1>Loading...</h1>;
 
-  // not logged in
   if (!user) {
     return <Navigate to="/login" replace />;
   }
 
-  // role mismatch
   if (
     role &&
     user.role?.toLowerCase() !== role.toLowerCase()
