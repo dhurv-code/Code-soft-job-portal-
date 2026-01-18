@@ -21,7 +21,6 @@ const applicationSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-// 🔴 prevent duplicate apply
 applicationSchema.index({ job: 1, applicant: 1 }, { unique: true });
 
 export default mongoose.model("Application", applicationSchema);
