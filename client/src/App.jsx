@@ -25,14 +25,7 @@ export default function App() {
             }
           />
 
-          {/* <Route
-            path="/jobs"
-            element={
-              <ProtectedRoute role="jobseeker">
-                <JobSeekerDashboard />
-              </ProtectedRoute>
-            }
-          /> */}
+         
           <Route path="/jobs" element={
             <ProtectedRoute role="jobseeker">
               <JobList />
