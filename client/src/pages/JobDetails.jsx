@@ -32,7 +32,7 @@ export default function JobDetails() {
       <p>{job.location}</p>
       <p>Type: {job.jobType}</p>
 
-      {/* 🔴 APPLY BUTTON */}
+      
       {user?.role === "jobseeker" && (
         <button onClick={apply}>Apply</button>
       )}
