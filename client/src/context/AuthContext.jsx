@@ -20,7 +20,7 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   const login = (token, user) => {
-    // 🔴 THIS WAS FAILING BEFORE
+   
     localStorage.setItem("token", token);
     localStorage.setItem("user", JSON.stringify(user));
 
